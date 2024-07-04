@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "@sveltejs/adapter-node": "^5.2.0"
+  },
+  "dependencies": {
+    "sveltekit-sse": "^0.13.2"
+  }
+}

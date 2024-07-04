@@ -1,0 +1,4 @@
+#Requirements
+uvicorn[standard]
+fastapi
+gpio.rpi

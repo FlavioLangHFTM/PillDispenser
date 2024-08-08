@@ -15,7 +15,7 @@ export async function GET({ params, request }) {
 
     try {
 
-        const response = await fetch(RPi_URL);
+        const response = await fetch(RPi_URL + "/allowPill/" + status);
         if (response.status !== 200) {
             throw new Error;
         }

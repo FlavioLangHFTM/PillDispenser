@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { SlideToggle } from "@skeletonlabs/skeleton";
-	import { source } from 'sveltekit-sse';
 
 	let alarmSliderValue: boolean = false;
 	let pillAllowedSliderValue: boolean = false;

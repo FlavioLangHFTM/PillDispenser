@@ -14,8 +14,9 @@ export async function GET({ params, request }) {
     }
 
     try {
-
-        const response = await fetch(RPi_URL);
+        console.log(RPi_URL)
+        let response = await fetch(RPi_URL + "/alarm/"+status);
+        console.log(response.status);
         if (response.status !== 200) {
             throw new Error;
         }

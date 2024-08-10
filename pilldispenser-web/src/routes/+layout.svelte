@@ -1,6 +1,6 @@
 <script lang="ts">
 	import '../app.postcss';
-	import { AppShell, AppBar } from '@skeletonlabs/skeleton';
+	import { AppShell, AppBar, LightSwitch } from '@skeletonlabs/skeleton';
 
 	// Highlight JS
 	import hljs from 'highlight.js/lib/core';
@@ -30,6 +30,9 @@
 		<AppBar>
 			<svelte:fragment slot="lead">
 				<strong class="text-xl uppercase">PillDispenser</strong>
+			</svelte:fragment>
+			<svelte:fragment slot="trail">
+				<LightSwitch/>
 			</svelte:fragment>
 		</AppBar>
 	</svelte:fragment>

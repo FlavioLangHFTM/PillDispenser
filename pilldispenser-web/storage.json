@@ -1,0 +1,43 @@
+{
+  "dispensers": [
+    {
+      "id": 1,
+      "active": true,
+      "name": "asdasd",
+      "address": "asdasdasdasdasdasdasdasdasd",
+      "timeRulesetType": 0,
+      "timeRuleset": {
+        "pillsPerInterval": 1,
+        "interval": 24,
+        "minWaitTime": 1
+      },
+      "intakeLog": []
+    },
+    {
+      "id": 2,
+      "active": true,
+      "name": "Test",
+      "address": "Testasdasd",
+      "timeRulesetType": 0,
+      "timeRuleset": {
+        "pillsPerInterval": 8,
+        "interval": 24,
+        "minWaitTime": 1
+      },
+      "intakeLog": []
+    },
+    {
+      "id": 3,
+      "active": true,
+      "name": "iuztrzuipoiuztrtzoiuzt",
+      "address": "äölkjhgfjklölkjhgfhjklölkjhgfd",
+      "timeRulesetType": 0,
+      "timeRuleset": {
+        "pillsPerInterval": 10,
+        "interval": 24,
+        "minWaitTime": 1
+      },
+      "intakeLog": []
+    }
+  ]
+}

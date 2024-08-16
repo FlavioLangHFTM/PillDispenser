@@ -29,11 +29,11 @@ export async function getDispensers(): Promise<PillDispenser[]> {
 }
 
 // Get a single PillDispenser by id
-export async function getDispenser(id: number): Promise<PillDispenser> {
+export async function getDispenser(): Promise<PillDispenser> {
     const storage = await readStorage();
-    const dispenser = storage.dispensers.find(d => d.id === id);
+    const dispenser = storage.dispensers.find(d => d.id === 1);
     if (!dispenser) {
-        throw new Error(`Dispenser with id ${id} not found`);
+        throw new Error(`Dispenser with id ${1} not found`);
     }
     return dispenser;
 }

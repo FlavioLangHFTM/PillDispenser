@@ -1,3 +1,5 @@
+import { getDispenser } from "./db/pillDispenserService";
+import { RPi_URL } from "./GLOBALS";
 import { TimeRulesetType, type PillDispenser, type PillInterval } from "./types/types";
 
 export function pillAllowed(dispenser: PillDispenser): boolean {
@@ -12,8 +14,8 @@ export function pillAllowed(dispenser: PillDispenser): boolean {
         let intakeInsideInterval: Date[] = [];
 
         dispenser.intakeLog.forEach(element => {
-            if(element >= timeBeforeInterval && element <= now) {
-                intakeInsideInterval.push(element);
+            if(element.intakeGranted && element.date >= timeBeforeInterval && element.date <= now) {
+                intakeInsideInterval.push(element.date);
             }
         });
 
@@ -48,8 +50,8 @@ export function pillNeeded(dispenser: PillDispenser): boolean {
         let averageWaitTime = Math.round(ruleset.interval / ruleset.pillsPerInterval);
 
         dispenser.intakeLog.forEach(element => {
-            if(element >= timeBeforeInterval && element <= now) {
-                intakeInsideInterval.push(element);
+            if(element.intakeGranted && element.date >= timeBeforeInterval && element.date <= now) {
+                intakeInsideInterval.push(element.date);
             }
         });
 
@@ -69,4 +71,54 @@ export function pillNeeded(dispenser: PillDispenser): boolean {
     }
 
     return false;
+}
+
+export async function runPillAllowed() {
+    let dispenser = await getDispenser();
+    if(pillAllowed(dispenser)) {
+        let res = await fetch(RPi_URL+"/allowPill/true", {
+            method: 'get'
+        })
+
+        if(res.status === 200) {
+            console.log("Dispenser erlaubt Einnahme!")
+        } else {
+            console.log("Fehler bei Kommunikation mit Dispenser")
+        }
+    } else {
+        let res = await fetch(RPi_URL+"/allowPill/false", {
+            method: 'get'
+        })
+
+        if(res.status === 200) {
+            console.log("Dispenser erlaubt Einnahme nicht!")
+        } else {
+            console.log("Fehler bei Kommunikation mit Dispenser")
+        }
+    }
+}
+
+export async function runPillNeeded() {
+    let dispenser = await getDispenser();
+    if(pillNeeded(dispenser)) {
+        let res = await fetch(RPi_URL+"/alarm/true", {
+            method: 'get'
+        })
+
+        if(res.status === 200) {
+            console.log("Dispenser erlaubt Einnahme!")
+        } else {
+            console.log("Fehler bei Kommunikation mit Dispenser")
+        }
+    } else {
+        let res = await fetch(RPi_URL+"/alarm/false", {
+            method: 'get'
+        })
+
+        if(res.status === 200) {
+            console.log("Dispenser erlaubt Einnahme nicht!")
+        } else {
+            console.log("Fehler bei Kommunikation mit Dispenser")
+        }
+    }
 }

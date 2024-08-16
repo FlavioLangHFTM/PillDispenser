@@ -5,7 +5,13 @@ export type PillDispenser = {
     address: string,
     timeRulesetType: TimeRulesetType,
     timeRuleset: PillInterval | PillFixedTimes,
-    intakeLog: Date[]
+    intakeLog: IntakeLog[]
+}
+
+export type IntakeLog = {
+    intakeGranted: boolean,
+    date: Date,
+    message: string
 }
 
 export type PillInterval = {

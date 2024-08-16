@@ -135,9 +135,9 @@
 		<form class="flex flex-col gap-4 xl:w-2/3">
 			<input id="id" type="hidden" bind:value={editedDispenser.id} />
 			<!-- <input id="tileRulesetType" type="hidden" bind:value={timeRuleValue}> -->
-			<label class="label">
+			<label class="label hidden">
 				<span>Bezeichnung</span>
-				<input id="name" class="input" type="text" bind:value={editedDispenser.name} />
+				<input id="name" class="input" type="hidden" bind:value={editedDispenser.name} />
 			</label>
 			<label class="label">
 				<span>Adresse</span>
